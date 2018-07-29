@@ -1,2 +1,7 @@
-for x in range(5,51,5):
-    print(x)
+mysum = 0
+
+for i in range(5,80,5):
+    mysum += i
+    if mysum == 15:
+        break
+print(mysum)
