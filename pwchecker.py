@@ -14,4 +14,3 @@ while pw_iterator < len(pw):
         print (char + " is not an acceptable character.")
         pw = input('Enter your password: ') # if the password has an unnacceptable letter
                                             # it will prompt again for a password
-        
