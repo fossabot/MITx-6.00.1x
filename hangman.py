@@ -12,13 +12,13 @@ def hangman(word):
     userName = input(
         "Hello and welcome to Joswayski's Hangman. What is your name? ")
     print('')
-    greeting = print("Hi " + userName + "! I hope you enjoy playing. Your first word has " + str(len(word)) +
+    print("Hi " + userName + "! I hope you enjoy playing. Your first word has " + str(len(word)) +
                      " letters.\n \nIt's time to start. If you input more than one letter, I will automaitcally grab the first one. Good luck!")
 
     print('')
 # Prints how many turns we have left
     guesses = ''
-    for letters in word:
+    for i in word:
         print(" _ ")
     print('')
     if turns == 1:
