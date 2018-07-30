@@ -10,4 +10,3 @@ def frequencyFinder(list):
     return freq
 
 print(frequencyFinder(scores))
-
