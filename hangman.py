@@ -77,5 +77,5 @@ def hangman(word):
             print("CONGRATULATIONS! YOU DID IT!")
             break
 
-
+# calls hangman with an imput using a random word from our words.txt
 hangman(random.choice(wordlist))
