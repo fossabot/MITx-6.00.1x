@@ -66,8 +66,13 @@ dealNewHand()
 
 
 while playerPiecesCount > 0:
+    print('')
+    print("You have these letters left: ")
+    print(userBoard)
+    print('not printing anything because userboard hasnt been defined yet, goodluck tommorow')
     playerHand = input(
             "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
+
     if playerHand == ".":
         print('')
         print("Ending game. You scored a total of " +
@@ -86,14 +91,12 @@ while playerPiecesCount > 0:
         print("You have " + str(totalPoints) + " total points.")
         print("")    
         playerPiecesCount -= len(playerHand) # DECREMENT player pieces count
-        # TODO erase words that were just played and move them to words that where played
         playerHandAdd2Used = playerHand[:]
         usedLetters += playerHandAdd2Used
         print("You have used the letters ") 
         print('')
         for i in usedLetters:
             print([i], ' ', end=' ' , flush=True) # prints words that we have used
-        print('')
     elif userChoice == 'r':
         print("Redoo the las hand")
     elif userChoice == 'e':
