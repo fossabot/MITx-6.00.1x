@@ -1,4 +1,5 @@
 import random
+
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
 line = inFile.readline()
@@ -11,12 +12,11 @@ playerPiecesCount = 10
 usedLetters = ''
 
 
-def wordScore(word): ## Gets the value of an input word
+def wordScore(word):  # Gets the value of an input word
     points = 0
     global usedLetters
     for i in word:
-            points += scrabbleLetterValue[i]
-            usedLetters = usedLetters + i
+        points += scrabbleLetterValue[i]
     if len(usedLetters) == playerPiecesCount:
         points *= len(word)  # Only do this if == player pieces count
     return points
@@ -28,20 +28,86 @@ def isValidWord(word):
     else:
         return False
 
+
 def updateHand(word):
     global playerPiecesCount
     playerPiecesCount -= len(word)
     return playerPiecesCount
 
+
+def randomLetter():
+    return random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+
+
+totalPoints = 0
 # PLAY GAME
+userChoice = ''
+userBoard = ''
+
+def dealNewHand():
+    userChoice = input(
+        "Enter n to deal a new hand, r to replay the last hand, or e to end the game: ").lower()
+    if userChoice == 'n':
+        print("Deal a new hand")
+        print('')
+        print("New hand, coming right up!")
+        print('')
+        userBoard = ''
+        print("Your new hand is: ")
+        print('')
+        for i in range(0, (playerPiecesCount)):  # gets random letter
+            userBoard = userBoard + randomLetter()
+        for i in range(0, len(userBoard)):  # prints random letter for the user
+            print(userBoard[i], ' ', end='')
+        print('')
+        print('')
+
+dealNewHand()
+
+
 while playerPiecesCount > 0:
-    playerHand = input("Put down a word: ").lower()
-    if isValidWord(playerHand) == True:
-        print("You placed down the word " + playerHand + " and you scored " + str(wordScore(playerHand.upper())) + " points." )
+    playerHand = input(
+            "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
+    if playerHand == ".":
+        print('')
+        print("Ending game. You scored a total of " +
+                      str(totalPoints) + " total points.")
+        print('')
+        break
+    elif isValidWord(playerHand):
+        print("")
+        print("This word is valid.")
+        totalPoints += wordScore(playerHand.upper())
+        print('')
+        print("You placed down the word " + "'" + playerHand + "'" +
+                    " and you scored " + str(wordScore(playerHand.upper())) + " points.")
         playerPiecesCount -= len(playerHand)
+        print("")
+        print("You have " + str(totalPoints) + " total points.")
+        print("")    
+        playerPiecesCount -= len(playerHand) # DECREMENT player pieces count
+        # TODO erase words that were just played and move them to words that where played
+        playerHandAdd2Used = playerHand[:]
+        usedLetters += playerHandAdd2Used
+        print("You have used the letters ") 
+        print('')
+        for i in usedLetters:
+            print([i], ' ', end=' ' , flush=True) # prints words that we have used
+        print('')
+    elif userChoice == 'r':
+        print("Redoo the las hand")
+    elif userChoice == 'e':
+        print('')
+        print('')
+        print("Game Over")
+        print('')
+        print('')
+        print("Thanks for playing!")
+        break
     else:
-        playerHand = input("I am sorry. That word is not valid. Try again.").lower()
-
-
-
-
+        print("I am sorry, that is not a valid entry. Only use letters A - Z.")
+        print("Your hand is: ")
+        for i in range(0, len(playerHand + 1)):
+            print("")
+            print([i])
+            print("")
