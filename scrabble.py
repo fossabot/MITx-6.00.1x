@@ -83,9 +83,10 @@ while playerPiecesCount > 0:
         print('')
         print("You placed down the word " + "'" + playerHand + "'" +
                     " and you scored " + str(wordScore(playerHand.upper())) + " points.")
-        for i in playerHand:
+        for i in playerHand.upper():
             if i in userBoard:
-                userBoard = userBoard - i # Removes letters if played
+                userBoard = userBoard.replace(i,'',1) # Removes letters if played
+        print(userBoard)
         playerPiecesCount -= len(playerHand)
         print("")
         print("You have " + str(totalPoints) + " total points.")
@@ -97,10 +98,11 @@ while playerPiecesCount > 0:
         print('')
         for i in usedLetters:
             print([i], ' ', end=' ' , flush=True) # prints words that we have used
-        print("You have these letters left: ")
         print('')
-        for i in range(0, len(userBoard)):  # prints userboard
-            print(userBoard[i], ' ', end='')
+        print("You have these letters left: ")
+        print(userBoard)
+        # for i in range(0, len(userBoard)):  # prints userboard
+        #     print(userBoard[i], ' ', end='')
     elif userChoice == 'r':
         print("Redoo the las hand")
     elif userChoice == 'e':
