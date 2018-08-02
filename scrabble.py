@@ -89,6 +89,13 @@ while playerPiecesCount > 0:
             print("You placed down the word " + "'" + playerHand.upper() + "'" +
                     " and you scored " + str(wordScore(playerHand.upper())) + " points.")
             print("You have " + str(totalPoints) + " total points.")
+            print("")
+            print("You have used the letters ")
+            playerHandAdd2Used = playerHand[:]
+            usedLetters += playerHandAdd2Used
+            for i in usedLetters: # FIX USED LETTERS TODO
+            # prints words that we have used
+                print(i.upper(), ' ', end=' ', flush=True)
             for i in playerHand.upper():
                 if i in userBoard:   # Removes letters if played
                     userBoard = userBoard.replace(i, '', 1)
@@ -97,18 +104,10 @@ while playerPiecesCount > 0:
         else:
             print("Your word was in the dictionary but you don't have sufficient letters so it does not count.")
         print("")
-
-        print("")
-        playerHandAdd2Used = playerHand[:]
-        usedLetters += playerHandAdd2Used
-        print("You have used the letters ")
-        print('')
-        for i in usedLetters:
-            # prints words that we have used
-            print(i.upper(), ' ', end=' ', flush=True)
+        
         print('')
         print('')
-        print("You have these letters left: ")
+        print("You have these pieces left: ")
         print('\n')
         print('')
         for i in userBoard:  # prints userboard
