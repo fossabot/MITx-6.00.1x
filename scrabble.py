@@ -52,14 +52,14 @@ def dealNewHand():
         print('')
         print("New hand, coming right up!")
         print('')
+        global userBoard
         userBoard = ''
         print("Your new hand is: ")
         print('')
         for i in range(0, (playerPiecesCount)):  # gets random letter
             userBoard = userBoard + randomLetter()
-        for i in range(0, len(userBoard)):  # prints random letter for the user
+        for i in range(0, len(userBoard)):  # prints userboard
             print(userBoard[i], ' ', end='')
-        print('')
         print('')
 
 dealNewHand()
@@ -67,9 +67,6 @@ dealNewHand()
 
 while playerPiecesCount > 0:
     print('')
-    print("You have these letters left: ")
-    print(userBoard)
-    print('ERROOOOOOOOOOOOOOOOOOR')
     playerHand = input(
             "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
 
@@ -86,6 +83,9 @@ while playerPiecesCount > 0:
         print('')
         print("You placed down the word " + "'" + playerHand + "'" +
                     " and you scored " + str(wordScore(playerHand.upper())) + " points.")
+        for i in playerHand:
+            if i in userBoard:
+                userBoard = userBoard - i # Removes letters if played
         playerPiecesCount -= len(playerHand)
         print("")
         print("You have " + str(totalPoints) + " total points.")
@@ -97,6 +97,10 @@ while playerPiecesCount > 0:
         print('')
         for i in usedLetters:
             print([i], ' ', end=' ' , flush=True) # prints words that we have used
+        print("You have these letters left: ")
+        print('')
+        for i in range(0, len(userBoard)):  # prints userboard
+            print(userBoard[i], ' ', end='')
     elif userChoice == 'r':
         print("Redoo the las hand")
     elif userChoice == 'e':
