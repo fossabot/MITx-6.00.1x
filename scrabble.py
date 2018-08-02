@@ -69,7 +69,7 @@ while playerPiecesCount > 0:
     print('')
     print("You have these letters left: ")
     print(userBoard)
-    print('not printing anything because userboard hasnt been defined yet, goodluck tommorow')
+    print('ERROOOOOOOOOOOOOOOOOOR')
     playerHand = input(
             "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
 
