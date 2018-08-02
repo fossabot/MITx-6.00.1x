@@ -61,8 +61,6 @@ def dealNewHand():
             userBoard = userBoard + randomLetter()
         for i in range(0, len(userBoard)):  # prints userboard
             print(userBoard[i], ' ', end='')
-        print('')
-
 
 dealNewHand()
 
@@ -111,7 +109,7 @@ while playerPiecesCount > 0:
         for i in userBoard:  # prints userboard
             print(userBoard[i], ' ', end='')
     elif userChoice == 'r':
-        print("Redoo the las hand")
+        print("Redoo the last hand")
     elif userChoice == 'e':
         print('')
         print('')
@@ -121,7 +119,9 @@ while playerPiecesCount > 0:
         print("Thanks for playing!")
         break
     else:
-        print("I am sorry, that is not a valid entry. Only use letters A - Z.")
+        print("I am sorry, that is not a valid entry. Please try again.")
+        print("")
         print("Your hand is: ")
-        for i in playerHand:  # Prints user hand after incorrect entry
-            print(userBoard[i], ' ', end='')
+        print("")
+        for i in userBoard:  # Prints user hand after incorrect entry
+            print(i, ' ', end='')
