@@ -99,10 +99,11 @@ while playerPiecesCount > 0:
         for i in usedLetters:
             print([i], ' ', end=' ' , flush=True) # prints words that we have used
         print('')
+        print('')
         print("You have these letters left: ")
-        print(userBoard)
-        # for i in range(0, len(userBoard)):  # prints userboard
-        #     print(userBoard[i], ' ', end='')
+        print('')
+        for i in range(0, len(userBoard)):  # prints userboard
+            print(userBoard[i], ' ', end='')
     elif userChoice == 'r':
         print("Redoo the las hand")
     elif userChoice == 'e':
@@ -116,7 +117,7 @@ while playerPiecesCount > 0:
     else:
         print("I am sorry, that is not a valid entry. Only use letters A - Z.")
         print("Your hand is: ")
-        for i in range(0, len(playerHand + 1)):
+        for i in playerHand:
             print("")
-            print([i])
+            print(i)
             print("")
