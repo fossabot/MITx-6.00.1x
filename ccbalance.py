@@ -1,9 +1,7 @@
 bal = input("What is your credit card balance?")
 while bal!= int or bal != float:
     print("That is not a valid entry.")
-    if:
-        bal == 
-
+    
 try:
     rate = float((input("What is your credit card interest rate?")))
 except ValueError:
