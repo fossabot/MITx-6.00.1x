@@ -71,7 +71,6 @@ while playerPiecesCount > 0:
     print('')
     playerHand = input(
         "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
-
     if playerHand == ".":
         print('')
         print("Ending game. You scored a total of " +
@@ -80,19 +79,25 @@ while playerPiecesCount > 0:
         break
     elif isValidWord(playerHand):
         print("")
-        print("This word is valid.")
-        totalPoints += wordScore(playerHand.upper())
-        print('')
-        print("You placed down the word " + "'" + playerHand.upper() + "'" +
-              " and you scored " + str(wordScore(playerHand.upper())) + " points.")
+        x = 0 # wrong letter counter
         for i in playerHand.upper():
-            if i in userBoard:
-                # Removes letters if played
-                userBoard = userBoard.replace(i, '', 1)
-        print(userBoard)
-        playerPiecesCount -= len(playerHand)
+            if i not in userBoard:
+                x += 1           
+        if x == 0:
+            totalPoints += wordScore(playerHand.upper())
+            print('')
+            print("You placed down the word " + "'" + playerHand.upper() + "'" +
+                    " and you scored " + str(wordScore(playerHand.upper())) + " points.")
+            print("You have " + str(totalPoints) + " total points.")
+            for i in playerHand.upper():
+                if i in userBoard:   # Removes letters if played
+                    userBoard = userBoard.replace(i, '', 1)
+                print(userBoard)
+                playerPiecesCount -= len(playerHand)
+        else:
+            print("Your word was in the dictionary but you don't have sufficient letters so it does not count.")
         print("")
-        print("You have " + str(totalPoints) + " total points.")
+
         print("")
         playerHandAdd2Used = playerHand[:]
         usedLetters += playerHandAdd2Used
@@ -107,7 +112,7 @@ while playerPiecesCount > 0:
         print('\n')
         print('')
         for i in userBoard:  # prints userboard
-            print(userBoard[i], ' ', end='')
+            print(i, ' ', end='')
     elif userChoice == 'r':
         print("Redoo the last hand")
     elif userChoice == 'e':
