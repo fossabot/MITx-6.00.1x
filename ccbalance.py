@@ -1,16 +1,29 @@
-bal = input("What is your credit card balance?")
-while bal!= int or bal != float:
-    print("That is not a valid entry.")
-    
-try:
-    rate = float((input("What is your credit card interest rate?")))
-except ValueError:
-    print("That is not a valid entry.")
+while True:
+    try:
+        bal = float(input("What is your credit card balance?"))
+    except ValueError:
+        print("I'm sorry, I dont understand.")
+        continue
+    else:
+        break
 
-try:
-    mPay = float((input("What is your average monthly payment?")))
-except ValueError:
-    print("That is not a valid entry.")
+while True:
+    try:
+        rate = float(input("What is your credit card interest rate?"))
+    except ValueError:
+        print("I'm sorry, I dont understand.")
+        continue
+    else:
+        break
+
+while True:
+    try:
+        mPay = float(input("What is your average monthly payment?"))
+    except ValueError:
+        print("I'm sorry, I dont understand.")
+        continue
+    else:
+        break
 
 
 # Checks how long it will take to pay off a CC
