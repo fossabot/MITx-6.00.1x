@@ -59,8 +59,8 @@ def playGame():
             "Enter a word, or a '.' to indicate that you are finished: ").lower()  # Keep asking for input as long as its invalid
         if playerHand == ".":
             print('')
-            print("Ending game. You scored a total of " +
-                  str(totalPoints) + " total points.")
+            print("Ending game. You scored a total of ",
+                  str(totalPoints), " total points.")
             print('')
             break
         elif isValidWord(playerHand):
@@ -72,9 +72,8 @@ def playGame():
             if x == 0:
                 totalPoints += wordScore(playerHand.upper())
                 print('')
-                print("You placed down the word " + "'" + playerHand.upper() + "'" +
-                      " and you scored " + str(wordScore(playerHand.upper())) + " points.")
-                print("You have " + str(totalPoints) + " total points.")
+                print("You placed down the word '", playerHand.upper(), "' and you scored ", str(wordScore(playerHand.upper())), " points.")
+                print("You have ", str(totalPoints), " total points.")
                 print("")
                 print("You have used the letters ")
                 print("")
