@@ -1,4 +1,6 @@
-scores = [100,97,45,90,90,76,67,28,398,97,45,90,100,67,80,84,85,86,87,90,90,100]
+scores = [100, 97, 45, 90, 90, 76, 67, 28, 398, 97,
+          45, 90, 100, 67, 80, 84, 85, 86, 87, 90, 90, 100]
+
 
 def frequencyFinder(list):
     freq = {}
@@ -8,5 +10,6 @@ def frequencyFinder(list):
         else:
             freq[i] = 1
     return freq
+
 
 print(frequencyFinder(scores))

@@ -12,8 +12,8 @@ def hangman(word):
     userName = input(
         "Hello and welcome to Joswayski's Hangman. What is your name? ")
     print('')
-    print("Hi " + userName + "! I hope you enjoy playing. Your first word has " + str(len(word)) +
-                     " letters.\n \nIt's time to start. If you input more than one letter, I will automaitcally grab the first one. Good luck!")
+    print("Hi ", userName, "! I hope you enjoy playing. Your first word has ", str(len(word)),
+          " letters.\n \nIt's time to start. If you input more than one letter, I will automaitcally grab the first one. Good luck!")
 
     print('')
 # Prints how many turns we have left
@@ -22,9 +22,9 @@ def hangman(word):
         print(" _ ")
     print('')
     if turns == 1:
-        print("You have " + str(turns) + " guess left.")
+        print("You have ", str(turns), " guess left.")
     elif turns >= 2:
-        print("You have " + str(turns) + " guesses left.")
+        print("You have ", str(turns), " guesses left.")
 
 # blank
     print('')
@@ -44,7 +44,7 @@ def hangman(word):
             userGuess = input("Guess a letter: ")
             # checks if user imputted that same thing already
         if userGuess in guesses:
-            print("You said '" + userGuess + "' already. Try again.")
+            print("You said '", userGuess, "' already. Try again.")
             # if user is correct
         elif userGuess in word:
             print("Correct!")
@@ -53,15 +53,15 @@ def hangman(word):
             print("Wrong!")
             turns -= 1
             if turns == 1:
-                print("Sorry, your guess is not in this word. Try again. You have " +
-                      str(turns) + " guess left.")
+                print("Sorry, your guess is not in this word. Try again. You have ",
+                      str(turns), " guess left.")
             elif turns >= 2:
-                print("Sorry, your guess is not in this word. Try again. You have " +
-                      str(turns) + " guesses left.")
+                print("Sorry, your guess is not in this word. Try again. You have ",
+                      str(turns), " guesses left.")
                 # if user is out of turns, end the game
             else:
                 print("GAME OVER")
-                print("Your word was: " + word)
+                print("Your word was: ", word)
                 break
             # adds userguess to guesses list
         for char in word:
@@ -76,6 +76,7 @@ def hangman(word):
         if failed == 0:
             print("CONGRATULATIONS! YOU DID IT!")
             break
+
 
 # calls hangman with an imput using a random word from our words.txt
 hangman(random.choice(wordlist))

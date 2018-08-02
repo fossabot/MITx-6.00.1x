@@ -12,6 +12,8 @@
 # OLD
 
 # NEW
+
+
 def integerDivisionNew(x, a):
     count = 0
     while x >= a:
@@ -19,4 +21,5 @@ def integerDivisionNew(x, a):
         x = x - a
     return count
 
-print(integerDivisionNew(10,5))
+
+print(integerDivisionNew(10, 5))

@@ -12,25 +12,32 @@ playerHand = ''  # keeps track of hand that player played
 playerPiecesCount = 10  # how many pieces to deal at the start of the game
 usedLetters = ''  # keeps track of letters used
 
+# Gets the value of a word
 
-def wordScore(word):  # Gets the value of a word
+
+def wordScore(word):
     points = 0
     global usedLetters
     for i in word:
         points += scrabbleLetterValue[i]
     if len(usedLetters) == playerPiecesCount:
-        points *= len(word)  # Only do this if == player pieces count
+        # Only do this if == player pieces count
+        points *= len(word)
     return points
 
+# Checks if the word you played was in the dictionary
 
-def isValidWord(word):  # Checks if the word you played was in the dictionary
+
+def isValidWord(word):
     if word in wordlist:
         return True
     else:
         return False
 
+# Reduces pieces by the length of the word that was played
 
-def updateHand(word):  # Reduces pieces by the length of the word that was played
+
+def updateHand(word):
     global playerPiecesCount
     playerPiecesCount -= len(word)
     return playerPiecesCount
@@ -42,10 +49,38 @@ def randomLetter():  # Gets a random letter
 
 totalPoints = 0
 
+# The board that the user gets from randomLetter
+userBoard = ''
+# Initial user input to start the game
+userChoice = ''
+# Acceptable inputs for userChoice
+acceptableChoices = ['nre']
 
-userBoard = ''  # The board that the user gets from randomLetter
-userChoice = ''  # Initial user input to start the game
-acceptableChoices = ['nre']     # Acceptable inputs for userChoice
+# Prints user hand after incorrect entry
+
+
+def showUserHand(userBoard):
+    for i in userBoard:
+        print(i, ' ', end='')
+
+# Give user his words
+
+
+def giveWords():
+    for i in range(0, (playerPiecesCount)):
+        userBoard = userBoard + randomLetter()
+
+
+def printUserWords():
+    for i in range(0, len(userBoard)):
+        print(userBoard[i], ' ', end='')
+
+
+def invalidEntryPrompt():
+    print("I am sorry, that is not a valid entry. Please try again.")
+    print("")
+    print("Your hand is: ")
+    print("")
 
 
 def playGame():
@@ -55,59 +90,73 @@ def playGame():
     global usedLetters
     while playerPiecesCount > 0:
         print('')
+        # Keep asking for input as long as its invalid
         playerHand = input(
-            "Enter a word, or a '.' to indicate that you are finished: ").lower()  # Keep asking for input as long as its invalid
+            "Enter a word, or a '.' to indicate that you are finished: ").lower()
         if playerHand == ".":
             print('')
             print("Ending game. You scored a total of ",
                   str(totalPoints), " total points.")
             print('')
             break
+        # Checks if the word you inputted is in dictionary
         elif isValidWord(playerHand):
             print("")
-            x = 0  # wrong letter counter
+            # Wrong letter counter
+            x = 0
             for i in playerHand.upper():
                 if i not in userBoard:
                     x += 1
+            # If no words are wrong
             if x == 0:
                 totalPoints += wordScore(playerHand.upper())
                 print('')
-                print("You placed down the word '", playerHand.upper(), "' and you scored ", str(wordScore(playerHand.upper())), " points.")
+                print("You placed down the word '", playerHand.upper(
+                ), "' and you scored ", str(wordScore(playerHand.upper())), " points.")
                 print("You have ", str(totalPoints), " total points.")
                 print("")
                 print("You have used the letters ")
                 print("")
+                # Add the letters that we used to usedLetters
                 playerHandAdd2Used = playerHand[:]
                 usedLetters += playerHandAdd2Used
                 for i in usedLetters:  # FIX USED LETTERS TODO
-                    # prints words that we have used
+                    # Prints words that we have used
                     print(i.upper(), ' ', end=' ', flush=True)
                 for i in playerHand.upper():
-                    if i in userBoard:   # Removes letters if played
+                    # Removes letters if played
+                    if i in userBoard:
                         userBoard = userBoard.replace(i, '', 1)
                     playerPiecesCount -= len(playerHand)
                 print("")
                 print("")
                 print("Your hand is: ")
                 print("")
-                for i in userBoard:  # Prints user hand after incorrect entry
-                    print(i, ' ', end='')
+                # Prints user hand after incorrect entry
+                showUserHand(userBoard)
             else:
                 print(
                     "Your word was in the dictionary but you don't have sufficient letters so it does not count.")
             print("")
             print("Your hand is: ")
             print("")
-            for i in userBoard:  # Prints user hand after incorrect entry
-                print(i, ' ', end='')
+            # Prints user hand after incorrect entry
+            showUserHand(userBoard)
 
         else:
-            print("I am sorry, that is not a valid entry. Please try again.")
-            print("")
-            print("Your hand is: ")
-            print("")
-            for i in userBoard:  # Prints user hand after incorrect entry
-                print(i, ' ', end='')
+            invalidEntryPrompt()
+
+            # Prints user hand after incorrect entry
+            showUserHand(userBoard)
+
+
+def gameOverPrompt():
+    print('')
+    print('')
+    print("Game Over")
+    print('')
+    print('')
+    print("Thanks for playing!")
 
 
 def dealNewHand():
@@ -123,21 +172,17 @@ def dealNewHand():
             userBoard = ''
             print("Your new hand is: ")
             print('')
-            for i in range(0, (playerPiecesCount)):  # gets random letters
-                userBoard = userBoard + randomLetter()
-            for i in range(0, len(userBoard)):  # prints the letters that were given
-                print(userBoard[i], ' ', end='')
+            # Gives user his words
+            giveWords()
+            # Prints the letters that were given
+            printUserWords()
+
             playGame()
             break
         elif userChoice == 'r':
             print("Redoo the last hand")
         elif userChoice == 'e':
-            print('')
-            print('')
-            print("Game Over")
-            print('')
-            print('')
-            print("Thanks for playing!")
+            gameOverPrompt()
             break
 
 
