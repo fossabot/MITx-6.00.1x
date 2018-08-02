@@ -66,6 +66,7 @@ dealNewHand()
 
 
 while playerPiecesCount > 0:
+    print("You have "  + str(playerPiecesCount) + " pieces left.")
     print('')
     playerHand = input(
             "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
@@ -91,7 +92,6 @@ while playerPiecesCount > 0:
         print("")
         print("You have " + str(totalPoints) + " total points.")
         print("")    
-        playerPiecesCount -= len(playerHand) # DECREMENT player pieces count
         playerHandAdd2Used = playerHand[:]
         usedLetters += playerHandAdd2Used
         print("You have used the letters ") 
@@ -101,6 +101,7 @@ while playerPiecesCount > 0:
         print('')
         print('')
         print("You have these letters left: ")
+        print('')
         print('')
         for i in range(0, len(userBoard)):  # prints userboard
             print(userBoard[i], ' ', end='')
