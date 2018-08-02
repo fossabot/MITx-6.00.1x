@@ -62,6 +62,7 @@ def dealNewHand():
         for i in range(0, len(userBoard)):  # prints userboard
             print(userBoard[i], ' ', end='')
 
+
 dealNewHand()
 
 
@@ -77,23 +78,23 @@ while playerPiecesCount > 0:
         break
     elif isValidWord(playerHand):
         print("")
-        x = 0 # wrong letter counter
+        x = 0  # wrong letter counter
         for i in playerHand.upper():
             if i not in userBoard:
-                x += 1           
+                x += 1
         if x == 0:
             totalPoints += wordScore(playerHand.upper())
             print('')
             print("You placed down the word " + "'" + playerHand.upper() + "'" +
-                    " and you scored " + str(wordScore(playerHand.upper())) + " points.")
+                  " and you scored " + str(wordScore(playerHand.upper())) + " points.")
             print("You have " + str(totalPoints) + " total points.")
             print("")
             print("You have used the letters ")
             print("")
             playerHandAdd2Used = playerHand[:]
             usedLetters += playerHandAdd2Used
-            for i in usedLetters: # FIX USED LETTERS TODO
-            # prints words that we have used
+            for i in usedLetters:  # FIX USED LETTERS TODO
+                # prints words that we have used
                 print(i.upper(), ' ', end=' ', flush=True)
             for i in playerHand.upper():
                 if i in userBoard:   # Removes letters if played
@@ -106,7 +107,8 @@ while playerPiecesCount > 0:
             for i in userBoard:  # Prints user hand after incorrect entry
                 print(i, ' ', end='')
         else:
-            print("Your word was in the dictionary but you don't have sufficient letters so it does not count.")
+            print(
+                "Your word was in the dictionary but you don't have sufficient letters so it does not count.")
         print("")
     elif userChoice == 'r':
         print("Redoo the last hand")
