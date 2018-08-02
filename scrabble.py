@@ -67,8 +67,6 @@ dealNewHand()
 
 while playerPiecesCount > 0:
     print('')
-    print("\nYou have " + str(playerPiecesCount) + " pieces left.")
-    print('')
     playerHand = input(
         "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
     if playerHand == ".":
@@ -91,6 +89,7 @@ while playerPiecesCount > 0:
             print("You have " + str(totalPoints) + " total points.")
             print("")
             print("You have used the letters ")
+            print("")
             playerHandAdd2Used = playerHand[:]
             usedLetters += playerHandAdd2Used
             for i in usedLetters: # FIX USED LETTERS TODO
@@ -99,19 +98,16 @@ while playerPiecesCount > 0:
             for i in playerHand.upper():
                 if i in userBoard:   # Removes letters if played
                     userBoard = userBoard.replace(i, '', 1)
-                print(userBoard)
                 playerPiecesCount -= len(playerHand)
+            print("")
+            print("")
+            print("Your hand is: ")
+            print("")
+            for i in userBoard:  # Prints user hand after incorrect entry
+                print(i, ' ', end='')
         else:
             print("Your word was in the dictionary but you don't have sufficient letters so it does not count.")
         print("")
-        
-        print('')
-        print('')
-        print("You have these pieces left: ")
-        print('\n')
-        print('')
-        for i in userBoard:  # prints userboard
-            print(i, ' ', end='')
     elif userChoice == 'r':
         print("Redoo the last hand")
     elif userChoice == 'e':
