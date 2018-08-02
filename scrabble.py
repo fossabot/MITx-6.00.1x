@@ -1,4 +1,5 @@
 import random
+# TODO fix global variables
 
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
@@ -7,12 +8,12 @@ wordlist = line.split()
 
 scrabbleLetterValue = {'A': 1, 'E': 1, 'I': 1, 'O': 1, 'N': 1, 'R': 1, 'T': 1, 'L': 1, 'S': 1, 'U': 1, 'D': 2, 'G': 2,
                        'B': 3, 'C': 3, 'M': 3, 'P': 3, 'F': 4, 'H': 4, 'V': 4, 'W': 4, 'Y': 4, 'K': 5, 'J': 8, 'X': 8, 'Q': 10, 'Z': 10}
-playerHand = ''
-playerPiecesCount = 10
-usedLetters = ''
+playerHand = ''  # keeps track of hand that player played
+playerPiecesCount = 10  # how many pieces to deal at the start of the game
+usedLetters = ''  # keeps track of letters used
 
 
-def wordScore(word):  # Gets the value of an input word
+def wordScore(word):  # Gets the value of a word
     points = 0
     global usedLetters
     for i in word:
@@ -22,28 +23,29 @@ def wordScore(word):  # Gets the value of an input word
     return points
 
 
-def isValidWord(word):
+def isValidWord(word):  # Checks if the word you played was in the dictionary
     if word in wordlist:
         return True
     else:
         return False
 
 
-def updateHand(word):
+def updateHand(word):  # Reduces pieces by the length of the word that was played
     global playerPiecesCount
     playerPiecesCount -= len(word)
     return playerPiecesCount
 
 
-def randomLetter():
+def randomLetter():  # Gets a random letter
     return random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
 
 totalPoints = 0
-# PLAY GAME
-userChoice = ''
-userBoard = ''
-acceptableChoices = ['nre']
+
+
+userBoard = ''  # The board that the user gets from randomLetter
+userChoice = ''  # Initial user input to start the game
+acceptableChoices = ['nre']     # Acceptable inputs for userChoice
 
 
 def playGame():
@@ -54,7 +56,7 @@ def playGame():
     while playerPiecesCount > 0:
         print('')
         playerHand = input(
-            "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
+            "Enter a word, or a '.' to indicate that you are finished: ").lower()  # Keep asking for input as long as its invalid
         if playerHand == ".":
             print('')
             print("Ending game. You scored a total of " +
@@ -122,9 +124,9 @@ def dealNewHand():
             userBoard = ''
             print("Your new hand is: ")
             print('')
-            for i in range(0, (playerPiecesCount)):  # gets random letter
+            for i in range(0, (playerPiecesCount)):  # gets random letters
                 userBoard = userBoard + randomLetter()
-            for i in range(0, len(userBoard)):  # prints userboard
+            for i in range(0, len(userBoard)):  # prints the letters that were given
                 print(userBoard[i], ' ', end='')
             playGame()
             break
