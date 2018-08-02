@@ -78,9 +78,9 @@ def printUserWords():
 
 def invalidEntryPrompt():
     print("I am sorry, that is not a valid entry. Please try again.")
-    print("")
+    print()
     print("Your hand is: ")
-    print("")
+    print()
 
 
 def playGame():
@@ -101,7 +101,7 @@ def playGame():
             break
         # Checks if the word you inputted is in dictionary
         elif isValidWord(playerHand):
-            print("")
+            print()
             # Wrong letter counter
             x = 0
             for i in playerHand.upper():
@@ -114,9 +114,9 @@ def playGame():
                 print("You placed down the word '", playerHand.upper(
                 ), "' and you scored ", str(wordScore(playerHand.upper())), " points.")
                 print("You have ", str(totalPoints), " total points.")
-                print("")
+                print()
                 print("You have used the letters ")
-                print("")
+                print()
                 # Add the letters that we used to usedLetters
                 playerHandAdd2Used = playerHand[:]
                 usedLetters += playerHandAdd2Used
@@ -128,18 +128,18 @@ def playGame():
                     if i in userBoard:
                         userBoard = userBoard.replace(i, '', 1)
                     playerPiecesCount -= len(playerHand)
-                print("")
-                print("")
+                print()
+                print()
                 print("Your hand is: ")
-                print("")
+                print()
                 # Prints user hand after incorrect entry
                 showUserHand(userBoard)
             else:
                 print(
                     "Your word was in the dictionary but you don't have sufficient letters so it does not count.")
-            print("")
+            print()
             print("Your hand is: ")
-            print("")
+            print()
             # Prints user hand after incorrect entry
             showUserHand(userBoard)
 
