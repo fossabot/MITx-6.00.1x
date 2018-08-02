@@ -44,6 +44,8 @@ totalPoints = 0
 userChoice = ''
 userBoard = ''
 acceptableChoices = ['nre']
+
+
 def playGame():
     global playerPiecesCount
     global totalPoints
@@ -56,7 +58,7 @@ def playGame():
         if playerHand == ".":
             print('')
             print("Ending game. You scored a total of " +
-                str(totalPoints) + " total points.")
+                  str(totalPoints) + " total points.")
             print('')
             break
         elif isValidWord(playerHand):
@@ -69,7 +71,7 @@ def playGame():
                 totalPoints += wordScore(playerHand.upper())
                 print('')
                 print("You placed down the word " + "'" + playerHand.upper() + "'" +
-                    " and you scored " + str(wordScore(playerHand.upper())) + " points.")
+                      " and you scored " + str(wordScore(playerHand.upper())) + " points.")
                 print("You have " + str(totalPoints) + " total points.")
                 print("")
                 print("You have used the letters ")
@@ -106,10 +108,11 @@ def playGame():
             for i in userBoard:  # Prints user hand after incorrect entry
                 print(i, ' ', end='')
 
+
 def dealNewHand():
     while True:
         userChoice = input(
-"Enter n to deal a new hand, r to replay the last hand, or e to end the game: ").lower()
+            "Enter n to deal a new hand, r to replay the last hand, or e to end the game: ").lower()
         if userChoice == 'n':
             print("Deal a new hand")
             print('')
@@ -135,5 +138,6 @@ def dealNewHand():
             print('')
             print("Thanks for playing!")
             break
+
 
 dealNewHand()
