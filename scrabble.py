@@ -44,6 +44,7 @@ totalPoints = 0
 userChoice = ''
 userBoard = ''
 
+
 def dealNewHand():
     userChoice = input(
         "Enter n to deal a new hand, r to replay the last hand, or e to end the game: ").lower()
@@ -62,19 +63,21 @@ def dealNewHand():
             print(userBoard[i], ' ', end='')
         print('')
 
+
 dealNewHand()
 
 
 while playerPiecesCount > 0:
-    print("You have "  + str(playerPiecesCount) + " pieces left.")
+    print('')
+    print("\nYou have " + str(playerPiecesCount) + " pieces left.")
     print('')
     playerHand = input(
-            "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
+        "Enter a word, or a '.' to indicate that you are finished: ").lower()        # while isValidWord(playerHand) == False:
 
     if playerHand == ".":
         print('')
         print("Ending game. You scored a total of " +
-                      str(totalPoints) + " total points.")
+              str(totalPoints) + " total points.")
         print('')
         break
     elif isValidWord(playerHand):
@@ -82,28 +85,30 @@ while playerPiecesCount > 0:
         print("This word is valid.")
         totalPoints += wordScore(playerHand.upper())
         print('')
-        print("You placed down the word " + "'" + playerHand + "'" +
-                    " and you scored " + str(wordScore(playerHand.upper())) + " points.")
+        print("You placed down the word " + "'" + playerHand.upper() + "'" +
+              " and you scored " + str(wordScore(playerHand.upper())) + " points.")
         for i in playerHand.upper():
             if i in userBoard:
-                userBoard = userBoard.replace(i,'',1) # Removes letters if played
+                # Removes letters if played
+                userBoard = userBoard.replace(i, '', 1)
         print(userBoard)
         playerPiecesCount -= len(playerHand)
         print("")
         print("You have " + str(totalPoints) + " total points.")
-        print("")    
+        print("")
         playerHandAdd2Used = playerHand[:]
         usedLetters += playerHandAdd2Used
-        print("You have used the letters ") 
+        print("You have used the letters ")
         print('')
         for i in usedLetters:
-            print([i], ' ', end=' ' , flush=True) # prints words that we have used
+            # prints words that we have used
+            print(i.upper(), ' ', end=' ', flush=True)
         print('')
         print('')
         print("You have these letters left: ")
+        print('\n')
         print('')
-        print('')
-        for i in range(0, len(userBoard)):  # prints userboard
+        for i in userBoard:  # prints userboard
             print(userBoard[i], ' ', end='')
     elif userChoice == 'r':
         print("Redoo the las hand")
@@ -118,7 +123,5 @@ while playerPiecesCount > 0:
     else:
         print("I am sorry, that is not a valid entry. Only use letters A - Z.")
         print("Your hand is: ")
-        for i in playerHand:
-            print("")
-            print(i)
-            print("")
+        for i in playerHand:  # Prints user hand after incorrect entry
+            print(userBoard[i], ' ', end='')
