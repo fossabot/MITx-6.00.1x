@@ -7,8 +7,8 @@ inFile = open(WORDLIST_FILENAME, 'r')
 line = inFile.readline()
 wordlist = line.split()
 
-scrabbleLetterValue = {'A': 1, 'E': 1, 'I': 1, 'O': 1, 'N': 1, 'R': 1, 'T': 1, 'L': 1, 'S': 1, 'U': 1, 'D': 2, 'G': 2,
-                       'B': 3, 'C': 3, 'M': 3, 'P': 3, 'F': 4, 'H': 4, 'V': 4, 'W': 4, 'Y': 4, 'K': 5, 'J': 8, 'X': 8, 'Q': 10, 'Z': 10}
+scrabbleLetterValue = {'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, 'I': 1,  'J': 8,  'K': 5, 'L': 1, 'M': 3,
+                       'N': 1, 'O': 1, 'P': 3,  'Q': 10, 'R': 1,  'S': 1, 'T': 1,   'U': 1,  'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10}
 playerHand = ''  # keeps track of hand that player played
 playerPiecesCount = 10  # how many pieces to deal at the start of the game
 usedLetters = ''  # keeps track of letters used
@@ -45,7 +45,7 @@ def updateHand(word):
 
 
 def randomLetter():  # Gets a random letter
-    r = random.randint(1,10)
+    r = random.randint(1, 10)
     letter = ''
     if r <= 5:
         letter = random.choice('AEIOU')
@@ -128,14 +128,15 @@ def playGame():
                 # Add the letters that we used to usedLetters
                 playerHandAdd2Used = playerHand[:]
                 usedLetters += playerHandAdd2Used
-                for i in usedLetters:  
+                for i in usedLetters:
                     # Prints words that we have used
                     print(i.upper(), ' ', end=' ', flush=True)
                 for i in playerHand.upper():
                     # Removes letters if played
                     if i in userBoard:
                         userBoard = userBoard.replace(i, '', 1)
-                playerPiecesCount -= len(playerHand) # Decrements player pieces
+                # Decrements player pieces
+                playerPiecesCount -= len(playerHand)
                 print(playerPiecesCount)
 
             else:
@@ -152,7 +153,6 @@ def playGame():
 
             # Prints user hand after incorrect entry
             showUserHand(userBoard)
-
 
 
 def gameOverPrompt():
