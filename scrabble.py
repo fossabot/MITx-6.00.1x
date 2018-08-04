@@ -50,7 +50,6 @@ def randomLetter():  # Gets a random letter
         letter = random.choice('AEIOU')
     else:
         letter = random.choice('BCDFGHJKLMNPQRSTVWXYZ')
-    print(r)
     return letter
 
 
@@ -74,6 +73,7 @@ def showUserHand(userBoard):
 
 
 def giveWords():
+    global userBoard
     for i in range(0, (playerPiecesCount)):
         userBoard = userBoard + randomLetter()
 
@@ -135,12 +135,7 @@ def playGame():
                     if i in userBoard:
                         userBoard = userBoard.replace(i, '', 1)
                     playerPiecesCount -= len(playerHand)
-                print()
-                print()
-                print("Your hand is: ")
-                print()
-                # Prints user hand after incorrect entry
-                showUserHand(userBoard)
+
             else:
                 print(
                     "Your word was in the dictionary but you don't have sufficient letters so it does not count.")
