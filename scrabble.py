@@ -1,6 +1,7 @@
 import random
 # TODO fix global variables
-
+# TODO increase chanecs of getting vowels. Random int 1-5 will get you a vowel, other 5 - 10 is a consonant
+# TODO add a computer player that gets the best word
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
 line = inFile.readline()
@@ -179,6 +180,7 @@ def dealNewHand():
 
             playGame()
             break
+        # TODO add this functionality
         elif userChoice == 'r':
             print("Redoo the last hand")
         elif userChoice == 'e':
