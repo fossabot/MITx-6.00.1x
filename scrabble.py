@@ -1,6 +1,5 @@
 import random
 # TODO fix global variables
-# TODO increase chanecs of getting vowels. Random int 1-5 will get you a vowel, other 5 - 10 is a consonant
 # TODO add a computer player that gets the best word
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
@@ -45,7 +44,14 @@ def updateHand(word):
 
 
 def randomLetter():  # Gets a random letter
-    return random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    r = random.randint(1,10)
+    letter = ''
+    if r <= 5:
+        letter = random.choice('AEIOU')
+    else:
+        letter = random.choice('BCDFGHJKLMNPQRSTVWXYZ')
+    print(r)
+    return letter
 
 
 totalPoints = 0
