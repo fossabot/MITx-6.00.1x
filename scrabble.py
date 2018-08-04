@@ -1,6 +1,7 @@
 import random
 # TODO fix global variables
 # TODO add a computer player that gets the best word
+# TODO if you get two words right, the game closes. Wrap in while loop
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
 line = inFile.readline()
