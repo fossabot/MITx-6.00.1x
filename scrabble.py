@@ -1,7 +1,7 @@
 import random
 # TODO fix global variables
 # TODO add a computer player that gets the best word
-# TODO if you get two words right, the game closes. Wrap in while loop
+# TODO total points is wrong
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
 line = inFile.readline()
@@ -128,14 +128,15 @@ def playGame():
                 # Add the letters that we used to usedLetters
                 playerHandAdd2Used = playerHand[:]
                 usedLetters += playerHandAdd2Used
-                for i in usedLetters:  # FIX USED LETTERS TODO
+                for i in usedLetters:  
                     # Prints words that we have used
                     print(i.upper(), ' ', end=' ', flush=True)
                 for i in playerHand.upper():
                     # Removes letters if played
                     if i in userBoard:
                         userBoard = userBoard.replace(i, '', 1)
-                    playerPiecesCount -= len(playerHand)
+                playerPiecesCount -= len(playerHand) # Decrements player pieces
+                print(playerPiecesCount)
 
             else:
                 print(
@@ -151,6 +152,7 @@ def playGame():
 
             # Prints user hand after incorrect entry
             showUserHand(userBoard)
+
 
 
 def gameOverPrompt():
