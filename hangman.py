@@ -5,6 +5,8 @@ inFile = open(WORDLIST_FILENAME, 'r')
 line = inFile.readline()
 wordlist = line.split()
 
+# TODO fix something thats broken
+
 
 # Prints intro greeting
 def hangman(word):

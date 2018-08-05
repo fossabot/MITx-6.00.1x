@@ -1,7 +1,7 @@
 # Simple demonstration of how to calculate how your money is going to last and return it in weeks
 
-cash = 1700
-fooddly = 7  # Daily food cost assuming $5 per meal
+cash = 1783.12
+fooddly = 15  # Daily food cost assuming $5 per meal
 foodwkly = fooddly * 7
 bills = 50  # Assumed weekly
 
