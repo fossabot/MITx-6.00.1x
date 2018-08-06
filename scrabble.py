@@ -1,7 +1,5 @@
 import random
-# TODO fix global variables
 # TODO add a computer player that gets the best word, name it as hint
-# TODO total points is wrong
 # TODO add winning condition cause waken won
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
@@ -11,7 +9,7 @@ wordlist = line.split()
 scrabbleLetterValue = {'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8, 'K': 5, 'L': 1, 'M': 3,
                        'N': 1, 'O': 1, 'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1, 'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10}
 playerHand = ''  # keeps track of hand that player played
-playerPiecesCount = 10  # how many pieces to deal at the start of the game
+playerPiecesCount = 2  # how many pieces to deal at the start of the game
 usedLetters = ''  # keeps track of letters used
 
 # Gets the value of a word
@@ -25,6 +23,7 @@ def wordScore(word):
     if len(usedLetters) == playerPiecesCount:
         # Only do this if == player pieces count
         points *= len(word)
+        # call a function here saying that you won, WINNING CONDITION
     return points
 
 # Checks if the word you played was in the dictionary
@@ -139,10 +138,14 @@ def playGame():
                 # Decrements player pieces
                 playerPiecesCount -= len(playerHand)
                 print(playerPiecesCount)
+                if len(playerPiecesCount) == 0:
+                    print()
+                    print("Congratulations! You've won the game. You scored a total of ", totalPoints, "points. I hope you enjoyed playing!")
 
             else:
                 print(
                     "Your word was in the dictionary but you don't have sufficient letters so it does not count.")
+
             print()
             print("Your hand is: ")
             print()
