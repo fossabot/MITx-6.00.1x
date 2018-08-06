@@ -97,16 +97,23 @@ def playGame():
     global totalPoints
     global userBoard
     global usedLetters
+
     while playerPiecesCount > 0:
-        print('')
+        print()
         # Keep asking for input as long as its invalid
         playerHand = input(
             "Enter a word, or a '.' to indicate that you are finished: ").lower()
         if playerHand == ".":
-            print('')
-            print("Ending game. You scored a total of ",
-                  str(totalPoints), " total points.")
-            print('')
+            print()
+            # Prints ending message in singular since the player only has 1 point
+            if totalPoints == 1:
+                print("Ending game. You only scored",
+                  str(totalPoints), "point.")
+                print()
+            else:
+                print("Ending game. You scored a total of ",
+                    str(totalPoints), " total points.")
+                print()
             break
         # Checks if the word you inputted is in dictionary
         elif isValidWord(playerHand):
@@ -119,7 +126,7 @@ def playGame():
             # If no words are wrong
             if x == 0:
                 totalPoints += wordScore(playerHand.upper())
-                print('')
+                print()
                 print("You placed down the word '", playerHand.upper(
                 ), "' and you scored ", str(wordScore(playerHand.upper())), " points.")
                 # Decrements player pieces
@@ -164,11 +171,11 @@ def playGame():
 
 
 def gameOverPrompt():
-    print('')
-    print('')
+    print()
+    print()
     print("Game Over")
-    print('')
-    print('')
+    print()
+    print()
     print("Thanks for playing!")
 
 # Deals new hand
@@ -176,13 +183,13 @@ def gameOverPrompt():
 
 def dealNewHand():
     print("Deal a new hand")
-    print('')
+    print()
     print("New hand, coming right up!")
-    print('')
+    print()
     global userBoard
     userBoard = ''
     print("Your new hand is: ")
-    print('')
+    print()
     # Gives user his words
     giveWords()
     # Prints the letters that were given
@@ -212,6 +219,7 @@ def start():
                 "Enter n to deal a new hand, r to replay the last hand, or e to end the game: "))
             userChoice = userChoice.lower()
             if userChoice == 'n':
+                dealNewHand()
                 playGame()
             elif userChoice == 'r':
                 print("Redoo the last hand")
