@@ -1,6 +1,7 @@
 import random
 # TODO add a computer player that gets the best word, name it as hint
-# TODO add winning condition cause waken won
+# TODO let players choose playerpiecescount
+# TODO add functionality to play last hand
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
 line = inFile.readline()
@@ -96,6 +97,7 @@ def playGame():
     global totalPoints
     global userBoard
     global usedLetters
+    print(playerPiecesCount)
     while playerPiecesCount > 0:
         print('')
         # Keep asking for input as long as its invalid
@@ -126,7 +128,8 @@ def playGame():
                 # Winning condition
                 if playerPiecesCount == 0:
                     print()
-                    print("Congratulations! You've won the game. You scored a total of ", totalPoints, "points. I hope you enjoyed playing!")
+                    print("Congratulations! You've won the game. You scored a total of ",
+                          totalPoints, "points. I hope you enjoyed playing!")
                     break
                 else:
                     print("You have ", str(totalPoints), " total points.")
@@ -169,28 +172,37 @@ def gameOverPrompt():
     print('')
     print("Thanks for playing!")
 
+# Deals new hand
+
 
 def dealNewHand():
+    print("Deal a new hand")
+    print('')
+    print("New hand, coming right up!")
+    print('')
+    global userBoard
+    userBoard = ''
+    print("Your new hand is: ")
+    print('')
+    # Gives user his words
+    giveWords()
+    # Prints the letters that were given
+    printUserWords()
+
+
+def start():
+    global playerPiecesCount
     while True:
+        try:
+            playerPiecesCount = int(
+                input("Please input how many letters you want dealt: "))
+        except ValueError:
+            print("Please enter a number.")
+            continue
         userChoice = input(
             "Enter n to deal a new hand, r to replay the last hand, or e to end the game: ").lower()
         if userChoice == 'n':
-            print("Deal a new hand")
-            print('')
-            print("New hand, coming right up!")
-            print('')
-            global userBoard
-            userBoard = ''
-            print("Your new hand is: ")
-            print('')
-            # Gives user his words
-            giveWords()
-            # Prints the letters that were given
-            printUserWords()
-
             playGame()
-            break
-        # TODO add this functionality
         elif userChoice == 'r':
             print("Redoo the last hand")
         elif userChoice == 'e':
@@ -198,4 +210,4 @@ def dealNewHand():
             break
 
 
-dealNewHand()
+start()
