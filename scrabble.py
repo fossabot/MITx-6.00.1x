@@ -192,18 +192,23 @@ def dealNewHand():
 
 def start():
     global playerPiecesCount
+    # Checks if letters is a number
     while True:
         try:
-            playerPiecesCount = int(
-                input("Please input how many letters you want dealt: "))
+            playerPiecesCount = abs(int(
+                input("Please input how many letters you want dealt: ")[0]))
             break
         except ValueError:
+            for i in playerPiecesCount:
+                if i == '.':
+                    print("Please enter a whole number.")
+            print(type(playerPiecesCount))
             print("Please enter a number.")
             continue
     while True:
         try:
             userChoice = str(input(
-            "Enter n to deal a new hand, r to replay the last hand, or e to end the game: "))
+                "Enter n to deal a new hand, r to replay the last hand, or e to end the game: "))
             userChoice = userChoice.lower()
             if userChoice == 'n':
                 playGame()
@@ -220,5 +225,5 @@ def start():
             continue
 
 
-
 start()
+print(playerPiecesCount, "tomato")
