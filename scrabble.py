@@ -97,7 +97,6 @@ def playGame():
     global totalPoints
     global userBoard
     global usedLetters
-    print(playerPiecesCount)
     while playerPiecesCount > 0:
         print('')
         # Keep asking for input as long as its invalid
@@ -198,10 +197,10 @@ def start():
             playerPiecesCount = abs(int(
                 input("Please input how many letters you want dealt. ")))
             if playerPiecesCount > 1:
-                print("You've selected to play with ", playerPiecesCount, " letters.")
+                print("You've selected to play with", playerPiecesCount, "letters.")
                 break
             else:
-                print("You've selected to play with only", playerPiecesCount, " letter. Oh boy. Here we go...")
+                print("You've selected to play with only", playerPiecesCount, "letter. Oh boy. Here we go...")
                 break
             break
         except ValueError:
@@ -214,7 +213,6 @@ def start():
             userChoice = userChoice.lower()
             if userChoice == 'n':
                 playGame()
-                break
             elif userChoice == 'r':
                 print("Redoo the last hand")
                 # Call function here
@@ -228,4 +226,3 @@ def start():
 
 
 start()
-print(playerPiecesCount, "tomato")
