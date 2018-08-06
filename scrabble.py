@@ -108,11 +108,11 @@ def playGame():
             # Prints ending message in singular since the player only has 1 point
             if totalPoints == 1:
                 print("Ending game. You only scored",
-                  str(totalPoints), "point.")
+                      str(totalPoints), "point.")
                 print()
             else:
                 print("Ending game. You scored a total of ",
-                    str(totalPoints), " total points.")
+                      str(totalPoints), " total points.")
                 print()
             break
         # Checks if the word you inputted is in dictionary
@@ -204,10 +204,12 @@ def start():
             playerPiecesCount = abs(int(
                 input("Please input how many letters you want dealt. ")))
             if playerPiecesCount > 1:
-                print("You've selected to play with", playerPiecesCount, "letters.")
+                print("You've selected to play with",
+                      playerPiecesCount, "letters.")
                 break
             else:
-                print("You've selected to play with only", playerPiecesCount, "letter. Oh boy. Here we go...")
+                print("You've selected to play with only",
+                      playerPiecesCount, "letter. Oh boy. Here we go...")
                 break
             break
         except ValueError:
