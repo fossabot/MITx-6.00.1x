@@ -121,6 +121,8 @@ def playGame():
                 print('')
                 print("You placed down the word '", playerHand.upper(
                 ), "' and you scored ", str(wordScore(playerHand.upper())), " points.")
+                # Decrements player pieces
+                playerPiecesCount -= len(playerHand)
                 # Winning condition
                 if playerPiecesCount == 0:
                     print()
@@ -141,8 +143,7 @@ def playGame():
                         # Removes letters if played
                         if i in userBoard:
                             userBoard = userBoard.replace(i, '', 1)
-                    # Decrements player pieces
-                    playerPiecesCount -= len(playerHand)
+
             else:
                 print(
                     "Your word was in the dictionary but you don't have sufficient letters so it does not count.")
