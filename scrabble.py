@@ -127,22 +127,22 @@ def playGame():
                     print("Congratulations! You've won the game. You scored a total of ", totalPoints, "points. I hope you enjoyed playing!")
                     break
                 else:
-                print("You have ", str(totalPoints), " total points.")
-                print()
-                print("You have used the letters ")
-                print()
-                # Add the letters that we used to usedLetters
-                playerHandAdd2Used = playerHand[:]
-                usedLetters += playerHandAdd2Used
-                for i in usedLetters:
-                    # Prints words that we have used
-                    print(i.upper(), ' ', end=' ', flush=True)
-                for i in playerHand.upper():
-                    # Removes letters if played
-                    if i in userBoard:
-                        userBoard = userBoard.replace(i, '', 1)
-                # Decrements player pieces
-                playerPiecesCount -= len(playerHand)
+                    print("You have ", str(totalPoints), " total points.")
+                    print()
+                    print("You have used the letters ")
+                    print()
+                    # Add the letters that we used to usedLetters
+                    playerHandAdd2Used = playerHand[:]
+                    usedLetters += playerHandAdd2Used
+                    for i in usedLetters:
+                        # Prints words that we have used
+                        print(i.upper(), ' ', end=' ', flush=True)
+                    for i in playerHand.upper():
+                        # Removes letters if played
+                        if i in userBoard:
+                            userBoard = userBoard.replace(i, '', 1)
+                    # Decrements player pieces
+                    playerPiecesCount -= len(playerHand)
             else:
                 print(
                     "Your word was in the dictionary but you don't have sufficient letters so it does not count.")
