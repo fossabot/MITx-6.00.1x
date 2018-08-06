@@ -9,7 +9,7 @@ wordlist = line.split()
 scrabbleLetterValue = {'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8, 'K': 5, 'L': 1, 'M': 3,
                        'N': 1, 'O': 1, 'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1, 'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10}
 playerHand = ''  # keeps track of hand that player played
-playerPiecesCount = 2  # how many pieces to deal at the start of the game
+playerPiecesCount = 5  # how many pieces to deal at the start of the game
 usedLetters = ''  # keeps track of letters used
 
 # Gets the value of a word
@@ -121,6 +121,12 @@ def playGame():
                 print('')
                 print("You placed down the word '", playerHand.upper(
                 ), "' and you scored ", str(wordScore(playerHand.upper())), " points.")
+                # Winning condition
+                if playerPiecesCount == 0:
+                    print()
+                    print("Congratulations! You've won the game. You scored a total of ", totalPoints, "points. I hope you enjoyed playing!")
+                    break
+                else:
                 print("You have ", str(totalPoints), " total points.")
                 print()
                 print("You have used the letters ")
@@ -137,11 +143,6 @@ def playGame():
                         userBoard = userBoard.replace(i, '', 1)
                 # Decrements player pieces
                 playerPiecesCount -= len(playerHand)
-                if playerPiecesCount == 0:
-                    print()
-                    print("Congratulations! You've won the game. You scored a total of ", totalPoints, "points. I hope you enjoyed playing!")
-                    break
-
             else:
                 print(
                     "Your word was in the dictionary but you don't have sufficient letters so it does not count.")
