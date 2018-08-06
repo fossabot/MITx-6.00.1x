@@ -196,18 +196,29 @@ def start():
         try:
             playerPiecesCount = int(
                 input("Please input how many letters you want dealt: "))
+            break
         except ValueError:
             print("Please enter a number.")
             continue
-        userChoice = input(
-            "Enter n to deal a new hand, r to replay the last hand, or e to end the game: ").lower()
-        if userChoice == 'n':
-            playGame()
-        elif userChoice == 'r':
-            print("Redoo the last hand")
-        elif userChoice == 'e':
-            gameOverPrompt()
-            break
+    while True:
+        try:
+            userChoice = str(input(
+            "Enter n to deal a new hand, r to replay the last hand, or e to end the game: "))
+            userChoice = userChoice.lower()
+            if userChoice == 'n':
+                playGame()
+                break
+            elif userChoice == 'r':
+                print("Redoo the last hand")
+                # Call function here
+                break
+            elif userChoice == 'e':
+                gameOverPrompt()
+                break
+        except ValueError:
+            print("Eother value eaERROR nd, or e to end the game: ")
+            continue
+
 
 
 start()
