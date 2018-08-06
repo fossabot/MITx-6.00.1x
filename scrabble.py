@@ -10,7 +10,7 @@ wordlist = line.split()
 scrabbleLetterValue = {'A': 1, 'B': 3, 'C': 3, 'D': 2, 'E': 1, 'F': 4, 'G': 2, 'H': 4, 'I': 1, 'J': 8, 'K': 5, 'L': 1, 'M': 3,
                        'N': 1, 'O': 1, 'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1, 'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10}
 playerHand = ''  # keeps track of hand that player played
-playerPiecesCount = 5  # how many pieces to deal at the start of the game
+playerPiecesCount = 1  # how many pieces to deal at the start of the game
 usedLetters = ''  # keeps track of letters used
 
 # Gets the value of a word
@@ -196,14 +196,16 @@ def start():
     while True:
         try:
             playerPiecesCount = abs(int(
-                input("Please input how many letters you want dealt: ")[0]))
+                input("Please input how many letters you want dealt. ")))
+            if playerPiecesCount > 1:
+                print("You've selected to play with ", playerPiecesCount, " letters.")
+                break
+            else:
+                print("You've selected to play with only", playerPiecesCount, " letter. Oh boy. Here we go...")
+                break
             break
         except ValueError:
-            for i in playerPiecesCount:
-                if i == '.':
-                    print("Please enter a whole number.")
-            print(type(playerPiecesCount))
-            print("Please enter a number.")
+            print("Please enter whole number.")
             continue
     while True:
         try:
