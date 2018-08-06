@@ -137,10 +137,10 @@ def playGame():
                         userBoard = userBoard.replace(i, '', 1)
                 # Decrements player pieces
                 playerPiecesCount -= len(playerHand)
-                print(playerPiecesCount)
-                if len(playerPiecesCount) == 0:
+                if playerPiecesCount == 0:
                     print()
                     print("Congratulations! You've won the game. You scored a total of ", totalPoints, "points. I hope you enjoyed playing!")
+                    break
 
             else:
                 print(
