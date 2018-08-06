@@ -1,6 +1,5 @@
 import random
 # TODO add a computer player that gets the best word, name it as hint
-# TODO let players choose playerpiecescount
 # TODO add functionality to play last hand
 WORDLIST_FILENAME = "words.txt"
 inFile = open(WORDLIST_FILENAME, 'r')
@@ -90,6 +89,7 @@ def invalidEntryPrompt():
     print()
     print("Your hand is: ")
     print()
+
 
 
 def playGame():
@@ -236,3 +236,6 @@ def start():
 
 
 start()
+
+# getBestHand():
+#     for
